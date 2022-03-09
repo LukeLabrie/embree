@@ -8635,26 +8635,7 @@ namespace Catch {
         }
         catch( std::string& msg ) {
             return msg;
-        }[ 99%] Building CXX object tutorials/embree_tests/CMakeFiles/embree_tests.dir/embree_tests.cpp.o
-In file included from .../embree-git/tutorials/embree_tests/embree_tests.cpp:5:
-.../embree-git/tutorials/embree_tests/../external/catch.hpp:8753:47: error: expected initializer before 'sigStackSize'
- 8753 |     constexpr static unsigned int std::size_t sigStackSize = 32768 >= MINSIGSTKSZ ? 32768 : MINSIGSTKSZ;
-      |                                               ^~~~~~~~~~~~
-.../embree-git/tutorials/embree_tests/../external/catch.hpp: In constructor 'Catch::FatalConditionHandler::FatalConditionHandler()':
-.../embree-git/tutorials/embree_tests/../external/catch.hpp:8781:28: error: 'sigStackSize' was not declared in this scope; did you mean 'sigStack'?
- 8781 |         sigStack.ss_size = sigStackSize;
-      |                            ^~~~~~~~~~~~
-      |                            sigStack
-.../embree-git/tutorials/embree_tests/../external/catch.hpp: At global scope:
-.../embree-git/tutorials/embree_tests/../external/catch.hpp:8812:45: error: 'sigStackSize' was not declared in this scope; did you mean 'sigstack'?
- 8812 |     char FatalConditionHandler::altStackMem[sigStackSize] = {};
-      |                                             ^~~~~~~~~~~~
-      |                                             sigstack
-make[2]: *** [tutorials/embree_tests/CMakeFiles/embree_tests.dir/build.make:76: tutorials/embree_tests/CMakeFiles/embree_tests.dir/embree_tests.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:2689: tutorials/embree_tests/CMakeFiles/embree_tests.dir/all] Error 2
-make: *** [Makefile:156: all] Error 2
-==> ERROR: A failure occurred in package().
-    Aborting...
+        }
         catch( const char* msg ) {
             return msg;
         }
@@ -8769,8 +8750,6 @@ namespace Catch {
 
     // 32kb for the alternate stack seems to be sufficient. However, this value
     // is experimentally determined, so that's not guaranteed.
-    // constexpr const static std::size_t sigStackSize = 32768 >= MINSIGSTKSZ ? 32768 : MINSIGSTKSZ;
-
     constexpr const static std::size_t sigStackSize = 32768
 
     static SignalDefs signalDefs[] = {
